@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ page.title }} · Sassano Chicago</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Spectral+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="{{ '/' | relative_url }}" class="brand" style="text-decoration:none;">Sassano <span>·</span> Chicago</a>
+    <div class="navlinks">
+      <a href="{{ '/' | relative_url }}#story">The Story</a>
+      <a href="{{ '/' | relative_url }}#timeline">Timeline</a>
+      <a href="{{ '/families.html' | relative_url }}">Families</a>
+      <a href="{{ '/death-certificates.html' | relative_url }}">Records</a>
+      <a href="{{ '/in-memory-of.html' | relative_url }}" style="color:var(--brick);">In Memory Of</a>
+    </div>
+  </nav>
+</header>
+
+{{ content }}
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand">Sassano <span style="color:var(--ochre); font-style:italic;">·</span> Chicago</div>
+        <p>Documenting the Sassanesi of Federal Street — and the parish records of San Giovanni Evangelista back to 1644 — since 2018.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="{{ '/' | relative_url }}#story">The Story</a></li>
+          <li><a href="{{ '/families.html' | relative_url }}">Families</a></li>
+          <li><a href="{{ '/death-certificates.html' | relative_url }}">Death Certificates</a></li>
+          <li><a href="{{ '/in-memory-of.html' | relative_url }}">In Memory Of</a></li>
+          <li><a href="{{ '/books-media.html' | relative_url }}">Books &amp; Media</a></li>
+          <li><a href="{{ '/acknowledgements.html' | relative_url }}">Acknowledgements</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>With thanks to</h4>
+        <ul>
+          <li>Peter Barbella, The Sassano Project</li>
+          <li>Pasquale Cirullo, civil records</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© Sassano · Chicago — a genealogy research project</span>
+      <span>Federal Street, 1893–1959</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
