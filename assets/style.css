@@ -99,7 +99,13 @@
   .btn-ghost{color:var(--ink); border-color:var(--stone-line);}
   .btn-ghost:hover{border-color:var(--ink);}
 
-  /* migration map motif */
+  /* migration map motif (legacy, kept in case reused elsewhere) */
+  .hero-photo{ max-width:340px; margin-left:auto; }
+  .hero-photo-caption{
+    font-family:'Spectral Mono', monospace; font-size:11.5px; color:var(--stone);
+    margin-top:10px; text-align:right;
+  }
+  @media (max-width:900px){ .hero-photo{ margin:0 auto; } }
   .map-motif{
     position:relative; height:340px;
   }
