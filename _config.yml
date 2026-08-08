@@ -1,3 +1,20 @@
 title: Sassano Chicago
-description: Documenting the Sassanesi of Federal Street, Chicago
+description: >-
+  A genealogy resource documenting the Sassanesi — Italian immigrants from Sassano,
+  Italy — who settled on Federal Street in Chicago from 1893 to 1959. Family trees,
+  death certificates, marriage records, and the history of Chicago's forgotten
+  Italian enclave in Grand Boulevard / Bronzeville.
+url: "https://www.sassanochicago.org"
+lang: en_US
+author: John A. Cavallone
 markdown: kramdown
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Used by jekyll-seo-tag for social sharing previews (Facebook, Twitter/X, etc.)
+# Point this at a real image once you have one you like -- 1200x630px works best.
+# twitter:
+#   card: summary_large_image
+# logo: /assets/images/photos/logo.jpg
