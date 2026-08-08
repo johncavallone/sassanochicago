@@ -17,17 +17,73 @@
       <a href="{{ '/' | relative_url }}#story">The Story</a>
       <a href="{{ '/families.html' | relative_url }}">Families</a>
       <a href="{{ '/resources.html' | relative_url }}">Resources</a>
-      <a href="{{ '/sassano-marriages.html' | relative_url }}">Marriages</a>
-      <a href="{{ '/twins.html' | relative_url }}">Twins</a>
-      <a href="{{ '/longevity.html' | relative_url }}">Longevity</a>
-      <a href="{{ '/family-alliances.html' | relative_url }}">Alliances</a>
+      <div class="nav-dropdown">
+        <button class="drop-trigger" aria-haspopup="true">Research <span class="drop-caret">▾</span></button>
+        <div class="drop-menu">
+          <a href="{{ '/sassano-marriages.html' | relative_url }}">Marriages</a>
+          <a href="{{ '/twins.html' | relative_url }}">Twins</a>
+          <a href="{{ '/longevity.html' | relative_url }}">Longevity</a>
+          <a href="{{ '/family-alliances.html' | relative_url }}">Family Alliances</a>
+        </div>
+      </div>
       <a href="{{ '/about.html' | relative_url }}">About</a>
       <a href="{{ '/in-memory-of.html' | relative_url }}" style="color:var(--brick);">In Memory Of</a>
     </div>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 </header>
+<div class="nav-scrim"></div>
 
 {{ content }}
+
+<script>
+  document.querySelectorAll('.nav-dropdown').forEach(function(dd){
+    var trigger = dd.querySelector('.drop-trigger');
+    trigger.addEventListener('click', function(e){
+      e.stopPropagation();
+      var isOpen = dd.classList.contains('is-open');
+      document.querySelectorAll('.nav-dropdown.is-open').forEach(function(o){ o.classList.remove('is-open'); });
+      if (!isOpen) dd.classList.add('is-open');
+    });
+  });
+  document.addEventListener('click', function(){
+    document.querySelectorAll('.nav-dropdown.is-open').forEach(function(o){ o.classList.remove('is-open'); });
+  });
+
+  // Mobile menu toggle
+  var navToggle = document.querySelector('.nav-toggle');
+  var navLinks = document.querySelector('.navlinks');
+  var navScrim = document.querySelector('.nav-scrim');
+
+  function closeMobileNav(){
+    navLinks.classList.remove('mobile-open');
+    navToggle.classList.remove('is-active');
+    navToggle.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('nav-open');
+  }
+  function openMobileNav(){
+    navLinks.classList.add('mobile-open');
+    navToggle.classList.add('is-active');
+    navToggle.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('nav-open');
+  }
+  if (navToggle) {
+    navToggle.addEventListener('click', function(e){
+      e.stopPropagation();
+      if (navLinks.classList.contains('mobile-open')) { closeMobileNav(); } else { openMobileNav(); }
+    });
+  }
+  if (navScrim) { navScrim.addEventListener('click', closeMobileNav); }
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') closeMobileNav();
+  });
+  // Close mobile menu when a real navigation link (not the Research toggle) is tapped
+  document.querySelectorAll('.navlinks a').forEach(function(a){
+    a.addEventListener('click', closeMobileNav);
+  });
+</script>
 
 <footer>
   <div class="wrap">
@@ -47,6 +103,7 @@
           <li><a href="{{ '/twins.html' | relative_url }}">Twins</a></li>
           <li><a href="{{ '/longevity.html' | relative_url }}">Longevity</a></li>
           <li><a href="{{ '/family-alliances.html' | relative_url }}">Family Alliances</a></li>
+          <li><a href="{{ '/blog.html' | relative_url }}">Blog</a></li>
           <li><a href="{{ '/death-certificates.html' | relative_url }}">Death Certificates</a></li>
           <li><a href="{{ '/cemetery-map.html' | relative_url }}">Cemetery Map</a></li>
           <li><a href="{{ '/in-memory-of.html' | relative_url }}">In Memory Of</a></li>
