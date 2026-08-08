@@ -25,6 +25,13 @@ title: Cemetery Map
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
+try {
+  if (typeof L === 'undefined') {
+    document.getElementById('cemetery-map').innerHTML =
+      '<div style="padding:24px; font-family:monospace; color:#7a3428;">Map library (Leaflet) failed to load from the CDN. Check your network/ad-blocker, or view the browser console for details.</div>';
+    throw new Error('Leaflet (L) is not defined — CDN script did not load.');
+  }
+
   var map = L.map('cemetery-map').setView([41.78, -87.75], 10);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -54,4 +61,15 @@ Maus S18-31 Tier 4 &middot; <a href="https://www.findagrave.com/memorial/2345934
   L.marker([42.0622, -87.893], {icon: cemIcon}).addTo(map)
     .bindPopup(`<div class="cem-popup"><h3>All Saints</h3><div class="cem-addr">700 N River Rd, Des Plaines, IL 60016</div><div class="cem-count">1 documented burials</div><ul class="cem-people"><li><a href="https://drive.google.com/file/d/1iiQrtWmdVLc026Wr_QHqGUzwngygnW3B/view?usp=sharing" target="_blank" rel="noopener">Riccio, Michael</a></li></ul></div>`, {maxWidth: 340, maxHeight: 320});
   L.marker([41.5495, -87.6103], {icon: cemIcon}).addTo(map)
-    .bindPopup(`<div class="cem-popup"><h3>Assumption</h3><div class="cem-addr">19500 S Cottage Grove Ave, Glenwood, IL 60425</div><div class="cem-count">1 documented burials</div><ul class="cem-people"><li><a href="https://drive.google.com/file/d/1xQ7RRBe6j2koW2iPkR-4GqgFz8dhN2xX/view?usp=sharing" target="_blank" rel="noopener">Rispoli, Emilia</a></li></ul></div>`, {maxWidth: 340, maxHeight: 320});</script>
+    .bindPopup(`<div class="cem-popup"><h3>Assumption</h3><div class="cem-addr">19500 S Cottage Grove Ave, Glenwood, IL 60425</div><div class="cem-count">1 documented burials</div><ul class="cem-people"><li><a href="https://drive.google.com/file/d/1xQ7RRBe6j2koW2iPkR-4GqgFz8dhN2xX/view?usp=sharing" target="_blank" rel="noopener">Rispoli, Emilia</a></li></ul></div>`, {maxWidth: 340, maxHeight: 320});
+
+  setTimeout(function(){ map.invalidateSize(); }, 200);
+
+} catch (err) {
+  console.error('Cemetery map failed to initialize:', err);
+  var mapDiv = document.getElementById('cemetery-map');
+  if (mapDiv && !mapDiv.querySelector('.leaflet-container')) {
+    mapDiv.innerHTML = '<div style="padding:24px; font-family:monospace; color:#7a3428;">Map failed to load: ' + err.message + '</div>';
+  }
+}
+</script>
