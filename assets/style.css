@@ -412,6 +412,14 @@
   .tract-block .tract-body{padding:0 20px 20px;}
   .tract-table th, .tract-table td{font-size:13px; padding:9px 10px;}
 
+  /* ===== YEAR BAR CHART ===== */
+  .yr-chart{margin:20px 0 8px;}
+  .yr-row{display:grid; grid-template-columns:56px 1fr 40px; align-items:center; gap:12px; padding:3px 0;}
+  .yr-label{font-family:'Spectral Mono',monospace; font-size:12.5px; color:var(--ink-soft); text-align:right;}
+  .yr-bar-track{background:var(--card); height:14px; position:relative;}
+  .yr-bar{background:var(--brick); height:100%; opacity:0.75;}
+  .yr-count{font-family:'Spectral Mono',monospace; font-size:12px; color:var(--stone);}
+
   /* ===== TESTIMONIALS ===== */
   .testimonial-list{display:flex; flex-direction:column; gap:1px; background:var(--stone-line); border:1px solid var(--stone-line); margin-top:8px;}
   .testimonial{background:var(--parchment-light); padding:26px 28px;}
