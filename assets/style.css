@@ -65,7 +65,7 @@
   }
   .nav-toggle span{width:24px; height:2px; background:var(--ink); display:block; transition:transform .2s ease, opacity .2s ease;}
   .nav-scrim{
-    display:none; position:fixed; inset:0; background:rgba(28,43,57,0.35); z-index:55;
+    display:none; position:fixed; inset:0; background:rgba(28,43,57,0.35); z-index:45;
   }
 
   @media (max-width:760px){
