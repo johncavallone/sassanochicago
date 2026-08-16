@@ -432,6 +432,9 @@
   .surname-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(300px,1fr)); gap:16px; margin-top:24px;}
   .surname-card{background:var(--parchment-light); border:1px solid var(--stone-line); padding:20px 22px;}
   .surname-card h3{font-family:'Fraunces',serif; font-weight:500; font-size:19px; color:var(--ink); margin-bottom:8px;}
+  .surname-card .sc-aka{
+    font-family:'Spectral Mono',monospace; font-size:11px; color:var(--brick); margin:-4px 0 10px; letter-spacing:.02em;
+  }
   .surname-card p{font-size:13.5px; color:var(--ink-soft); line-height:1.55; margin-bottom:10px;}
   .surname-card .sc-links{display:flex; gap:12px; flex-wrap:wrap; font-family:'Spectral Mono',monospace; font-size:11.5px;}
   .surname-card .sc-links a{color:var(--brick); text-decoration:none; border-bottom:1px dotted var(--brick);}
