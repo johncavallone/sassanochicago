@@ -393,9 +393,7 @@
     background:var(--card); border:1px solid var(--stone-line); padding:22px 22px 20px; flex:1; min-width:220px;
     overflow-wrap:break-word; word-break:break-word; text-align:center;
   }
-  .pay-icon{width:40px; height:40px; margin:0 auto 12px; -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat; -webkit-mask-position:center; mask-position:center; -webkit-mask-size:contain; mask-size:contain;}
-  .pay-icon-paypal{background-color:#003087; -webkit-mask-image:url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/paypal.svg'); mask-image:url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/paypal.svg');}
-  .pay-icon-venmo{background-color:#008CFF; -webkit-mask-image:url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/venmo.svg'); mask-image:url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/venmo.svg');}
+  .pay-icon{width:40px; height:40px; margin:0 auto 12px; display:block;}
   .pay-card h4{font-family:'Lora',serif; font-size:17px; font-weight:600; margin-bottom:6px;}
   .pay-card .handle{font-family:'Spectral Mono',monospace; font-size:13px; color:var(--ink-soft); overflow-wrap:break-word; word-break:break-word;}
 
