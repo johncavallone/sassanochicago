@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% seo %}
+<link rel="icon" href="{{ '/assets/favicon/favicon.ico' | relative_url }}" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/favicon/favicon-32x32.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/favicon/favicon-16x16.png' | relative_url }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/favicon/apple-touch-icon.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="192x192" href="{{ '/assets/favicon/android-chrome-192x192.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="512x512" href="{{ '/assets/favicon/android-chrome-512x512.png' | relative_url }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Spectral+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="{{ '/' | relative_url }}" class="brand" style="text-decoration:none;">Sassano <span>·</span> Chicago</a>
+    <div class="navlinks">
+      <a href="{{ '/' | relative_url }}#story">The Story</a>
+      <a href="{{ '/families.html' | relative_url }}">Families</a>
+      <a href="{{ '/cavallone-brothers.html' | relative_url }}">Cavallone Brothers</a>
+      <a href="{{ '/resources.html' | relative_url }}">Resources</a>
+      <div class="nav-dropdown">
+        <button class="drop-trigger" aria-haspopup="true">Research <span class="drop-caret">▾</span></button>
+        <div class="drop-menu">
+          <a href="{{ '/sassano-marriages.html' | relative_url }}">Marriages</a>
+          <a href="{{ '/twins.html' | relative_url }}">Twins</a>
+          <a href="{{ '/longevity.html' | relative_url }}">Longevity</a>
+          <a href="{{ '/family-alliances.html' | relative_url }}">Family Alliances</a>
+          <a href="{{ '/records.html' | relative_url }}">Notable Records</a>
+          <a href="{{ '/crisis-years.html' | relative_url }}">Crisis Years</a>
+          <a href="{{ '/surnames.html' | relative_url }}">Surnames</a>
+        </div>
+      </div>
+      <a href="{{ '/about.html' | relative_url }}">About</a>
+      <a href="{{ '/donate.html' | relative_url }}" style="color:var(--brick);">Donate</a>
+      <a href="{{ '/in-memory-of.html' | relative_url }}" style="color:var(--brick);">In Memory Of</a>
+    </div>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+<div class="nav-scrim"></div>
+
+{{ content }}
+
+<script>
+  document.querySelectorAll('.nav-dropdown').forEach(function(dd){
+    var trigger = dd.querySelector('.drop-trigger');
+    trigger.addEventListener('click', function(e){
+      e.stopPropagation();
+      var isOpen = dd.classList.contains('is-open');
+      document.querySelectorAll('.nav-dropdown.is-open').forEach(function(o){ o.classList.remove('is-open'); });
+      if (!isOpen) dd.classList.add('is-open');
+    });
+  });
+  document.addEventListener('click', function(){
+    document.querySelectorAll('.nav-dropdown.is-open').forEach(function(o){ o.classList.remove('is-open'); });
+  });
+
+  // Mobile menu toggle
+  var navToggle = document.querySelector('.nav-toggle');
+  var navLinks = document.querySelector('.navlinks');
+  var navScrim = document.querySelector('.nav-scrim');
+
+  function closeMobileNav(){
+    navLinks.classList.remove('mobile-open');
+    navToggle.classList.remove('is-active');
+    navToggle.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('nav-open');
+  }
+  function openMobileNav(){
+    navLinks.classList.add('mobile-open');
+    navToggle.classList.add('is-active');
+    navToggle.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('nav-open');
+  }
+  if (navToggle) {
+    navToggle.addEventListener('click', function(e){
+      e.stopPropagation();
+      if (navLinks.classList.contains('mobile-open')) { closeMobileNav(); } else { openMobileNav(); }
+    });
+  }
+  if (navScrim) { navScrim.addEventListener('click', closeMobileNav); }
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') closeMobileNav();
+  });
+  // Close mobile menu when a real navigation link (not the Research toggle) is tapped
+  document.querySelectorAll('.navlinks a').forEach(function(a){
+    a.addEventListener('click', closeMobileNav);
+  });
+</script>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <img src="{{ '/assets/images/photos/logo.jpg' | relative_url }}" alt="Sassano Chicago" style="width:90px; height:auto; margin-bottom:16px; border-radius:2px;">
+        <div class="brand">Sassano <span style="color:var(--ochre); font-style:italic;">·</span> Chicago</div>
+        <p>Documenting the Sassanesi of Federal Street — and the parish records of San Giovanni Evangelista back to 1644 — since 2018.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="{{ '/' | relative_url }}#story">The Story</a></li>
+          <li><a href="{{ '/families.html' | relative_url }}">Families</a></li>
+          <li><a href="{{ '/resources.html' | relative_url }}">Resources</a></li>
+          <li><a href="{{ '/sassano-marriages.html' | relative_url }}">Marriages</a></li>
+          <li><a href="{{ '/twins.html' | relative_url }}">Twins</a></li>
+          <li><a href="{{ '/longevity.html' | relative_url }}">Longevity</a></li>
+          <li><a href="{{ '/family-alliances.html' | relative_url }}">Family Alliances</a></li>
+          <li><a href="{{ '/records.html' | relative_url }}">Notable Records</a></li>
+          <li><a href="{{ '/crisis-years.html' | relative_url }}">Crisis Years</a></li>
+          <li><a href="{{ '/surnames.html' | relative_url }}">Surnames</a></li>
+          <li><a href="{{ '/gallery.html' | relative_url }}">Photo Gallery</a></li>
+          <li><a href="{{ '/cavallone-brothers.html' | relative_url }}">Michele Libretti &amp; the Cavallone Brothers</a></li>
+          <li><a href="{{ '/blog.html' | relative_url }}">Blog</a></li>
+          <li><a href="{{ '/death-certificates.html' | relative_url }}">Death Certificates</a></li>
+          <li><a href="{{ '/cemetery-map.html' | relative_url }}">Cemetery Map</a></li>
+          <li><a href="{{ '/in-memory-of.html' | relative_url }}">In Memory Of</a></li>
+          <li><a href="{{ '/books-media.html' | relative_url }}">Books &amp; Media</a></li>
+          <li><a href="{{ '/acknowledgements.html' | relative_url }}">Acknowledgements</a></li>
+          <li><a href="{{ '/about.html' | relative_url }}">About</a></li>
+          <li><a href="{{ '/donate.html' | relative_url }}">Support This Project</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>With thanks to</h4>
+        <ul>
+          <li>Peter Barbella, The Sassano Project</li>
+          <li>Pasquale Cirullo, civil records</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© Sassano · Chicago — a genealogy research project</span>
+      <span>Federal Street, 1893–1959</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
