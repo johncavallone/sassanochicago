@@ -141,9 +141,24 @@
       <span>© Sassano · Chicago — a genealogy research project</span>
       <span>Federal Street, 1893–1959</span>
       <span>Site last updated: {{ site.time | date: "%-d %b %Y" }}</span>
+      <span id="page-view-count" style="opacity:0.7;"></span>
     </div>
   </div>
 </footer>
+
+<script>
+(function(){
+  var el = document.getElementById('page-view-count');
+  if (!el) return;
+  var key = encodeURIComponent(location.pathname || '/');
+  var url = 'https://counterapi.com/api/sassanochicago.org/view/' + key;
+  fetch(url).then(function(r){ return r.json(); }).then(function(data){
+    if (data && typeof data.value !== 'undefined') {
+      el.textContent = data.value.toLocaleString() + ' views';
+    }
+  }).catch(function(){ /* fail silently, leave the span empty */ });
+})();
+</script>
 
 </body>
 </html>
